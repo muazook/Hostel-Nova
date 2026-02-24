@@ -1,0 +1,399 @@
+/* =========================
+   GLOBAL / RESET
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("./Resources/Images/bg-img.png");
+    padding: 8px;
+}
+
+/* =========================
+   FONTS
+========================= */
+@font-face {
+    font-family: "Akira-Regular";
+    src: url("./Resources/Fonts/akiraregular.ttf") format("truetype");
+}
+
+/* =========================
+   LAYOUT
+========================= */
+main {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1600px;
+    min-width: 600px;
+    margin: 0 auto;
+}
+
+.first-div,
+.second-div {
+    flex: 1;
+    /* 50/50 split */
+    min-width: 0;
+    /* prevents text overflow pushing layout */
+    padding: 1.25rem;
+}
+
+/* Inner sections should size naturally */
+.block-section,
+.text-section {
+    height: auto;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1 {
+    font-family: "Akira-Regular";
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    padding-left: 0.313rem;
+    margin: auto;
+    color: #ffffff;
+    text-shadow:
+        0 0 2px #ff5a5a,
+        0 0 6px #ff2a2a,
+        0 0 12px #ff1a1a,
+        0 0 20px #af000a;
+}
+
+h2,
+h3 {
+    font-family: "Barlow Condensed";
+    letter-spacing: 0.125rem;
+    word-spacing: 0.625rem;
+    color: #D4F7F9;
+    font-weight: 400;
+    margin: 0.625rem 0.125rem;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(1rem, 1.8vw, 1.75rem);
+}
+
+p {
+    font-family: "Barlow";
+    font-size: clamp(0.75rem, 1.05vw, 0.95rem);
+    letter-spacing: 2px;
+    color: #D4F7F9;
+    margin: 10px 2px;
+}
+
+
+/* Prevent text from bleeding outside First-div */
+.first-div p,
+.first-div h1,
+.first-div h2,
+.first-div h3 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.second-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.first-div h1 {
+    letter-spacing: 0.7rem;
+}
+
+
+/* =========================
+   NAV
+========================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 1.25rem;
+    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+a.nova {
+    font-family: "Akira-Regular";
+    font-size: clamp(0.95rem, 2vw, 2rem);
+    text-decoration: none;
+    color: #e60c0b;
+    border: 3px solid #e60c0b;
+    padding: 0 8px 0 5px;
+    display: inline-block;
+    transform: rotate(-10deg);
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, text-shadow 0.3s ease;
+}
+
+a.nova:hover {
+    border-color: #ff2a2a;
+    color: #fff;
+    text-shadow:
+        0 0 2px #ff5a5a,
+        0 0 6px #ff2a2a,
+        0 0 12px #ff1a1a,
+        0 0 20px #af000a;
+    box-shadow:
+        0 0 4px #ff5a5a,
+        0 0 6px #ff2a2a,
+        0 0 12px #ff1a1a,
+        0 0 20px #af000a;
+}
+
+a.design,
+.neon-fx {
+    font-family: "Barlow Condensed";
+    font-size: clamp(0.95rem, 1.8vw, 1.75rem);
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: clamp(2px, 0.45vw, 4.75px);
+    color: #e85f66;
+    text-shadow:
+        0 0 1px #ff5a5a,
+        0 0 2px #ff2a2a,
+        0 0 4px #ff1a1a,
+        0 0 8px #af000a;
+}
+
+/* =========================
+   TUBES
+========================= */
+.tube-active,
+.tube-inactive {
+    min-width: 60%;
+    max-width: 65%;
+    border-radius: 999px;
+    display: inline-block;
+    margin-left: 5px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, filter 0.3s ease, transform 0.2s ease;
+}
+
+.tube-active {
+    border: 4px solid #D4F7F9;
+    box-shadow: 0 0 2px #ff5a5a, 0 0 4px #ff2a2a, 0 0 8px #ff1a1a, 0 0 16px #af000a;
+}
+
+.tube-inactive {
+    border: 4px solid #af000a;
+    box-shadow: 0 0 2px #ff5a5a, 0 0 4px #ff2a2a, 0 0 8px #ff1a1a, 0 0 16px #af000a;
+}
+
+.tube-hover:hover {
+    border-color: #D4F7F9;
+    box-shadow: 0 0 4px #ff5a5a, 0 0 10px #ff2a2a, 0 0 16px #ff1a1a, 0 0 22px #af000a;
+}
+
+/* =========================
+   COLOR BLOCKS (RIGHT SIDE) — DEFAULT ONLY
+========================= */
+
+.block-section {
+    position: relative;
+    min-height: 260px;
+    min-width: 600px;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* base block */
+.block {
+    position: absolute;
+    height: 110px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.875rem 1rem;
+    box-sizing: border-box;
+}
+
+
+/* LEFT / CENTER / RIGHT anchors */
+.block-1 {
+    top: 10%;
+    left: 2.5%;
+    z-index: 1;
+    min-width: 50%;
+    max-width: 80%;
+}
+
+.block-2 {
+    top: 27.5%;
+    left: 20%;
+    z-index: 2;
+    min-width: 50%;
+    max-width: 80%;
+}
+
+.block-3 {
+    bottom: 10%;
+    left: 37.5%;
+    z-index: 3;
+    min-width: 50%;
+    max-width: 80%;
+}
+
+/*BLOCK COLORS*/
+
+.red {
+    background-color: #af000a;
+}
+
+.lightblue {
+    background-color: #D4F7F9;
+}
+
+.white {
+    background-color: #fff;
+}
+
+/* Shared label style */
+.p-red,
+.p-lightblue,
+.p-white {
+    font-family: "Barlow";
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.p-red {
+    color: #D4F7F9;
+}
+
+.p-lightblue,
+.p-white {
+    color: #000;
+}
+
+/* =========================
+   TEXT SECTION (RIGHT SIDE)
+========================= */
+.text-section {
+    width: 100%;
+    padding: 0.625rem 1.875rem;
+}
+
+.text-section p {
+    text-align: justify;
+    line-height: 1.6;
+    max-width: 120ch;
+    padding-right: 10%;
+}
+
+/* Responsive typography */
+.text-section h3 {
+    font-size: clamp(1.125rem, 2vw, 32px);
+}
+
+
+/* =========================
+   RESPONSIVE (with NAV)
+========================= */
+
+/* <= 1024px */
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+    }
+
+    .second-div {
+        overflow-y: auto;
+    }
+
+    /* Tube sizes are reduced to prevent them from dominating the smaller screen */
+
+    .tube-active,
+    .tube-inactive {
+        min-width: 50%;
+        max-width: 55%;
+    }
+}
+
+/* <= 900px */
+@media (max-width: 900px) {
+
+    .first-div,
+    .second-div {
+        padding: 0.875rem;
+    }
+
+    .first-div h2 {
+        letter-spacing: 2px;
+    }
+
+    .first-div h3 {
+        letter-spacing: 2px;
+    }
+
+    /* NAV */
+    nav {
+        padding: 0.5rem 0.6rem;
+    }
+
+    /* Tube sizes are reduced to prevent them from dominating the smaller screen */
+
+    .tube-active,
+    .tube-inactive {
+        min-width: 50%;
+        max-width: 55%;
+    }
+
+}
+
+/* <= 600px */
+@media (max-width: 600px) {
+    main {
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .first-div {
+        flex: none;
+        overflow: visible;
+    }
+
+    .second-div {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .first-div h2 {
+        letter-spacing: 1px;
+    }
+
+    .first-div h3 {
+        letter-spacing: 1px;
+    }
+
+    /* NAV */
+    nav {
+        text-align: center;
+    }
+
+    /* Tube sizes are reduced to prevent them from dominating the smaller screen */
+
+    .tube-active,
+    .tube-inactive {
+        min-width: 50%;
+        max-width: 55%;
+    }
+}
