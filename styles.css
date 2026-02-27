@@ -373,7 +373,7 @@ a.design,
 
     .second-div {
         flex: 1;
-        overflow-y: auto;
+        overflow: visible;
     }
 
     .first-div h2 {
@@ -396,4 +396,5 @@ a.design,
         min-width: 50%;
         max-width: 55%;
     }
+
 }
